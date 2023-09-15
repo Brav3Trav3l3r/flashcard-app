@@ -1,0 +1,41 @@
+{
+  "collection": [
+    {
+      "id": 1,
+      "title": "JavaScript",
+      "topics": [
+        {
+          "id": 11,
+          "title": "Objects and prototypes",
+          "created-at": "1694778256"
+        },
+        {
+          "id": 12,
+          "title": "Arrays",
+          "created-at": "1694778256"
+        },
+        {
+          "id": 13,
+          "title": "Advanced functions",
+          "created-at": "1694778256"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "CSS",
+      "topics": [
+        {
+          "id": 21,
+          "title": "Css positions",
+          "created-at": "1694778256"
+        },
+        {
+          "id": 22,
+          "title": "Animtion in css",
+          "created-at": "1694778256"
+        }
+      ]
+    }
+  ]
+}

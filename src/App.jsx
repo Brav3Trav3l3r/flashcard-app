@@ -1,9 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import Container from "./components/styles/Container.styled";
 import { GlobalStyles } from "./components/styles/Global.styled";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import RootLayout from "./pages/RootLayout";
+import { useState } from "react";
 
 const router = createBrowserRouter([
   {
