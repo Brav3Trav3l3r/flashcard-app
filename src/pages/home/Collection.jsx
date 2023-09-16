@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 export default function Collection({ data }) {
   return (
@@ -7,7 +8,9 @@ export default function Collection({ data }) {
       <Title>{data.title}</Title>
       <Grid>
         {data.topics.map((c) => (
-          <Card key={c.id} cardDetail={c} />
+          <Link key={c.id} to={`${c.id}`}>
+            <Card cardDetail={c} />
+          </Link>
         ))}
       </Grid>
     </>

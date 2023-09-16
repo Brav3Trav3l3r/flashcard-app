@@ -1,0 +1,19 @@
+{
+  "id": 11,
+  "title": "Objects and prototypes",
+  "created-at": "1694778256",
+  "questions": [
+    {
+      "question": "What does Ajax mean?",
+      "answer": "Asynchronous JavaScript and XML"
+    },
+    {
+      "question": "What is JSON?",
+      "answer": "JavaScript Object Notation"
+    },
+    {
+      "question": "What is the object you use to make an Ajax call?",
+      "answer": "The XMLHttpRequest object is used to exchange data with a server."
+    }
+  ]
+}

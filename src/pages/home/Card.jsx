@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Card({ cardDetail: c }) {
   return (
-    <CardStyled key={c.id} className="card">
+    <CardStyled className="card">
       <h1>{c.title}</h1>
     </CardStyled>
   );
@@ -17,6 +17,7 @@ const CardStyled = styled.div`
   justify-content: center;
   text-align: center;
   border-radius: 1rem;
+  height: 100%;
 
   h1 {
     font-size: 1.2rem;

@@ -4,12 +4,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home/Home";
 import RootLayout from "./pages/RootLayout";
 import { useState } from "react";
+import Details from "./pages/details/Details";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Home /> },
+      { path: ":id", element: <Details /> },
+    ],
   },
 ]);
 

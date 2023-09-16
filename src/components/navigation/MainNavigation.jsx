@@ -24,7 +24,6 @@ const Navigation = styled.nav`
   a {
     font-family: "Playball", cursive;
     font-size: 2.5rem;
-    text-decoration: none;
     color: inherit;
   }
 

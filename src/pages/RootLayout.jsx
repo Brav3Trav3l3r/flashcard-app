@@ -13,7 +13,7 @@ export default function RootLayout() {
 
 const Container = styled.div`
   padding: 2rem;
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
