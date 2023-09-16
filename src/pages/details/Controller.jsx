@@ -1,14 +1,28 @@
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-export default function Controller() {
+export default function Controller(props) {
   return (
     <ControllerStyled>
-      <ControllerButton>
+      <ControllerButton
+        onClick={() => {
+          if (props.currentIndex > 0) {
+            props.setCurrentIndex((prev) => prev - 1);
+          }
+        }}
+      >
         <Icon icon="lucide:arrow-left" />
       </ControllerButton>
-      <p>1/7</p>
-      <ControllerButton>
+      <p>
+        {props.currentIndex + 1}/{props.length}
+      </p>
+      <ControllerButton
+        onClick={() => {
+          if (props.currentIndex < props.length - 1) {
+            props.setCurrentIndex((prev) => prev + 1);
+          }
+        }}
+      >
         <Icon icon="lucide:arrow-right" />
       </ControllerButton>
     </ControllerStyled>
