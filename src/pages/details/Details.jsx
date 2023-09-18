@@ -9,10 +9,6 @@ export default function Details() {
   const params = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    console.log(currentIndex);
-  }, [currentIndex]);
-
   return (
     <DetailsContainer>
       <h1>{details.title}</h1>

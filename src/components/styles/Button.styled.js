@@ -5,7 +5,7 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.neutral};
 
   &:focus {
-    color: #4d2db7;
+    color: ${({ theme }) => theme.colors.secondary};
   }
 
   &:hover {

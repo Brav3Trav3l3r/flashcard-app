@@ -1,14 +1,16 @@
 import { Icon } from "@iconify/react";
 import { Button } from "../styles/Button.styled";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import styled from "styled-components";
 
-export default function MainNavigation() {
+export default function MainNavigation({ setIsOpen }) {
+
   return (
     <Navigation>
-      <Button>
+      <Button onClick={() => setIsOpen((prev) => !prev)}>
         <Icon icon="lucide:plus" width={32} />
       </Button>
+
       <Link to="/">My Flashcards</Link>
       <Button>
         <Icon icon="lucide:moon-star" width={32} />
