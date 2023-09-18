@@ -6,7 +6,7 @@ import Collection from "./Collection";
 import { db } from "../../../firebase/firebase";
 
 export default function CardCollection() {
-  const colRef = collection(db, "books");
+  // const colRef = collection(db, "books");
 
   // onSnapshot(colRef, (snapshot) => {
   //   let books = [];

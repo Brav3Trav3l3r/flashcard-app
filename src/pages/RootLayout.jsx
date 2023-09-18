@@ -3,8 +3,8 @@ import MainNavigation from "../components/navigation/MainNavigation";
 import styled from "styled-components";
 import Modal from "../components/modal/Modal";
 import { useState } from "react";
-import AddCollection from "../components/modal/addCollection";
 import AddQuestion from "../components/modal/AddQuestion";
+import AddCollection from "../components/modal/AddCollection";
 
 export default function RootLayout() {
   const location = useLocation();
