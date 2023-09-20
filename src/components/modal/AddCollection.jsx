@@ -1,31 +1,38 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Input from "../styles/Input.styled";
-import { Button } from "../styles/Button.styled";
+import { useState } from "react";
+import { ModalCard } from "./ModalCard";
+import { Form, FormButton,Input } from "../styles/Form.styled";
+import { db } from "/firebase/firebase-config";
+import { setDoc, doc } from "firebase/firestore";
 
 export default function AddCollection() {
   const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => console.log(inputValue), [inputValue]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const targetDoc = doc(db, `flashcards/${inputValue}`);
+    setDoc(targetDoc, {
+      title: inputValue,
+      topics: [],
+    })
+      .then(() => console.log("added doc"))
+      .catch((err) => console.log(err));
+
+    setInputValue("");
+  };
 
   return (
     <ModalCard>
-      <h4>Add collection</h4>
-      <form action="">
+      <h3>Add collection</h3>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
+          name="collection"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <Button>Add</Button>
-      </form>
+        <FormButton>ADD</FormButton>
+      </Form>
     </ModalCard>
   );
 }
-
-const ModalCard = styled.div`
-  background-color: ${({ theme }) => theme.colors.card};
-  border-radius: 0.5rem;
-  padding: 1rem;
-  color: ${({ theme }) => theme.colors.cardContent};
-`;

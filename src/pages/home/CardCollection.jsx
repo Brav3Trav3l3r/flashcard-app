@@ -1,26 +1,36 @@
-import React from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import React, { useCallback, useEffect, useState } from "react";
+import { collection, onSnapshot, getDocs } from "firebase/firestore";
 import styled from "styled-components";
-import cards from "../../data/cards.json";
 import Collection from "./Collection";
-import { db } from "../../../firebase/firebase";
+import { db } from "../../../firebase/firebase-config";
 
 export default function CardCollection() {
-  // const colRef = collection(db, "books");
+  const [flashcards, setFlashcards] = useState([]);
+  let unsubCollRef;
 
-  // onSnapshot(colRef, (snapshot) => {
-  //   let books = [];
-  //   snapshot.docs.forEach((doc) => {
-  //     books.push({ ...doc.data(), id: doc.id });
-  //   });
-  //   console.log(books);
-  // });
+  const getLiveDocs = useCallback(() => {
+    const colRef = collection(db, "flashcards");
+    unsubCollRef = onSnapshot(colRef, (snapshot) => {
+      let arr = [];
+      snapshot.docs.forEach((d) => {
+        arr.push({ id: d.id, ...d.data() });
+      });
+      setFlashcards(arr);
+    });
+
+    console.log(flashcards);
+  }, []);
+
+  useEffect(() => {
+    getLiveDocs();
+
+    return () => unsubCollRef();
+  }, []);
 
   return (
     <CardColllectionStyled>
-      {cards.collection.map((c) => (
-        <Collection key={c.id} data={c} />
-      ))}
+      {flashcards.length &&
+        flashcards.map((c) => <Collection key={c.id} data={c} />)}
     </CardColllectionStyled>
   );
 }

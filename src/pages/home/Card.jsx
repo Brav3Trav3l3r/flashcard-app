@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Card({ cardDetail: c }) {
   return (
     <CardStyled className="card">
-      <h1>{c.title}</h1>
+      <h1>{c}</h1>
     </CardStyled>
   );
 }

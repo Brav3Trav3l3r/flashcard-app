@@ -24,8 +24,9 @@ const Backdrop = styled.div`
   position: absolute;
   inset: 0;
   background-color: ${({ theme }) => theme.colors.body};
-  opacity: 60%;
+  opacity: 80%;
   z-index: 0;
+  backdrop-filter: blur(10px);
 `;
 
 const ContentStyled = styled.div`
