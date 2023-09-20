@@ -5,6 +5,7 @@ import Modal from "../components/modal/Modal";
 import { useState } from "react";
 import AddQuestion from "../components/modal/AddQuestion";
 import AddCollection from "../components/modal/AddCollection";
+import Footer from "../components/Footer";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -12,22 +13,25 @@ export default function RootLayout() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Container>
-      <MainNavigation setIsOpen={setIsOpen} />
-      {isOpen && (
-        <Modal setIsOpen={setIsOpen}>
-          {location.pathname == "/" ? <AddCollection /> : <AddQuestion />}
-        </Modal>
-      )}
-      <Outlet />
-    </Container>
+    <>
+      <Container>
+        <MainNavigation setIsOpen={setIsOpen} />
+        {isOpen && (
+          <Modal setIsOpen={setIsOpen}>
+            {location.pathname == "/" ? <AddCollection /> : <AddQuestion />}
+          </Modal>
+        )}
+        <Outlet />
+      </Container>
+      <Footer />
+    </>
   );
 }
 
 const Container = styled.div`
   padding: 2rem;
   max-width: 1024px;
-  margin: 0 auto;
+  margin: 0 auto 4rem auto;
 
   @media (max-width: 768px) {
     padding: 1rem;
