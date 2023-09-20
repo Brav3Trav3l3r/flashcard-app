@@ -1,24 +1,16 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBG1VXPhJL8EUBYvfUN4Zq_TzxAfOm8_lw",
-  authDomain: "react-demo-a7c7e.firebaseapp.com",
-  databaseURL:
-    "https://react-demo-a7c7e-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "react-demo-a7c7e",
-  storageBucket: "react-demo-a7c7e.appspot.com",
-  messagingSenderId: "730036832228",
-  appId: "1:730036832228:web:10136b90577a0e3f0be9f1",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore();
-
-
