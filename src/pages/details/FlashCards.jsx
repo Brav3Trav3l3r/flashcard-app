@@ -53,6 +53,7 @@ const FalshCardStyled = styled.div`
 
   p {
     font-size: 1.5rem;
+    color: ${({ theme }) => theme.colors.cardContent};
   }
 
   @media (max-width: 768px) {

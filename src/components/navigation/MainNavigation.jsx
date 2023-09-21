@@ -1,10 +1,9 @@
 import { Icon } from "@iconify/react";
 import { Button } from "../styles/Button.styled";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function MainNavigation({ setIsOpen }) {
-
+export default function MainNavigation({ setIsOpen, theme, toggleTheme }) {
   return (
     <Navigation>
       <Button onClick={() => setIsOpen((prev) => !prev)}>
@@ -12,8 +11,12 @@ export default function MainNavigation({ setIsOpen }) {
       </Button>
 
       <Link to="/">My Flashcards</Link>
-      <Button>
-        <Icon icon="lucide:moon-star" width={32} />
+      <Button onClick={toggleTheme}>
+        {theme.type === "dark" ? (
+          <Icon icon="lucide:moon-star" width={32} />
+        ) : (
+          <Icon icon="lucide:sun" width={32} />
+        )}
       </Button>
     </Navigation>
   );

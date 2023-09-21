@@ -7,7 +7,7 @@ export const Button = styled.button`
   display: flex;
 
   &:hover {
-    color: ${({ $color }) => $color ?? "orange"};
+    color: ${({ theme }) => theme.colors.secondary};
     cursor: pointer;
   }
 `;

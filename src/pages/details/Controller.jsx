@@ -54,10 +54,11 @@ const ControllerButton = styled.button`
   cursor: pointer;
   width: 2rem;
   font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.secondary};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
-    color: ${({ theme }) => theme.colors.neutral};
+    color: ${({ theme }) => theme.colors.body};
     border: 2px solid transparent;
   }
 `;

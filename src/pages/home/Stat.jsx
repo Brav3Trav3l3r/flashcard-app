@@ -11,7 +11,7 @@ export default function Stat() {
 }
 
 const StatStyled = styled.div`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.accent};
 
   margin-top: 4rem;
   text-align: center;

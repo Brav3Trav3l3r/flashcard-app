@@ -29,7 +29,6 @@ const IconStack = styled.div`
   gap: 0.75rem;
   align-items: center;
   padding: 0.5rem;
-  /* background-color: ${({ theme }) => theme.colors.secondary}; */
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.body};
   border-radius: 0.5rem;
 `;

@@ -17,8 +17,6 @@ export default function CardCollection() {
       });
       setFlashcards(arr);
     });
-
-    console.log(flashcards);
   }, []);
 
   useEffect(() => {
