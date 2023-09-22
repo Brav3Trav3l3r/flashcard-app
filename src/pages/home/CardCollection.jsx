@@ -27,8 +27,10 @@ export default function CardCollection() {
 
   return (
     <CardColllectionStyled>
-      {flashcards.length &&
-        flashcards.map((c) => <Collection key={c.id} data={c} />)}
+      {flashcards.length ?
+        flashcards.map((c) => <Collection key={c.id} data={c} />) : 
+          <h3>No topics available</h3>
+        }
     </CardColllectionStyled>
   );
 }

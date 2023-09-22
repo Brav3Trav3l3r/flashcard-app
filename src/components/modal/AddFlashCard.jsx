@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ModalCard } from "./ModalCard";
 import { Form, FormButton, Input } from "../styles/Form.styled";
 import { db } from "/firebase/firebase-config";
-import { collection, setDoc, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 export default function AddFlashcard({ data, setIsOpen }) {
   const [inputValue, setInputValue] = useState("");
@@ -11,16 +11,8 @@ export default function AddFlashcard({ data, setIsOpen }) {
     e.preventDefault();
     const docRef = doc(db, `flashcards/${data.id}`);
     await updateDoc(docRef, {
-      id: data.id,
       topics: [inputValue, ...data.topics],
     });
-
-    const questionDoc = doc(
-      db,
-      `flashcards/${data.id}/${inputValue}/questions`
-    );
-    console.log(questionDoc);
-    await set(questionDoc, { questions: [] });
 
     setIsOpen(false);
     setInputValue("");

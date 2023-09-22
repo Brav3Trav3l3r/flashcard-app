@@ -1,15 +1,30 @@
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import { ModalCard } from "./ModalCard";
-import { Form, FormButton,Input } from "../styles/Form.styled";
+import { Form, FormButton, Input } from "../styles/Form.styled";
+import { db } from "/firebase/firebase-config";
+import { setDoc, doc, arrayUnion } from "firebase/firestore";
 
 export default function AddQuestion() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  const handleSubmit = (e) => {
+  const params = useParams();
+  const { id: id, subjectId: subjectId } = params;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setInputValue("");
+    const questionsDocRef = doc(db, `flashcards/${subjectId}/${id}/questions`);
+    await setDoc(
+      questionsDocRef,
+      {
+        questions: arrayUnion({ question, answer }),
+      },
+      { merge: true }
+    );
+    setQuestion("");
+    setAnswer("");
   };
 
   return (

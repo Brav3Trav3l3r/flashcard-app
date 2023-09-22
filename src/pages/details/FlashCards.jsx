@@ -13,21 +13,27 @@ export default function FlashCards({ questions, currentIndex }) {
   }, [currentIndex]);
 
   return (
-    <StackFlashCardStyled>
-      <FalshCardStyled onClick={switchContent} $move="0" $index="10">
-        {showAnswer ? (
-          <div>
-            <p>{questions[currentIndex].answer}</p>
-          </div>
-        ) : (
-          <div>
-            <p>{questions[currentIndex].question}</p>
-          </div>
-        )}
-      </FalshCardStyled>
-      <FalshCardStyled $move="10px" $index="5"></FalshCardStyled>
-      <FalshCardStyled $move="20px" $index="0"></FalshCardStyled>
-    </StackFlashCardStyled>
+    <>
+      {questions?.length ? (
+        <StackFlashCardStyled>
+          <FalshCardStyled onClick={switchContent} $move="0" $index="10">
+            {showAnswer ? (
+              <div>
+                <p>{questions[currentIndex]?.answer}</p>
+              </div>
+            ) : (
+              <div>
+                <p>{questions[currentIndex]?.question}</p>
+              </div>
+            )}
+          </FalshCardStyled>
+          <FalshCardStyled $move="10px" $index="5"></FalshCardStyled>
+          <FalshCardStyled $move="20px" $index="0"></FalshCardStyled>
+        </StackFlashCardStyled>
+      ) : (
+        <h1>add</h1>
+      )}
+    </>
   );
 }
 

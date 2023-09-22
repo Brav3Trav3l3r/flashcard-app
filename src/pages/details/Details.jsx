@@ -5,26 +5,49 @@ import FlashCards from "./FlashCards";
 import Controller from "./Controller";
 import { useEffect, useState } from "react";
 import { db } from "/firebase/firebase-config";
+import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore";
 
 export default function Details() {
-  const params = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [questions, setQuestions] = useState({});
 
-  console.log(params.id)
+  const params = useParams();
+  const { id: id, subjectId: subjectId } = params;
 
   useEffect(() => {
-    function getQuestion() {}
-  }, []);
+    async function getQuestions() {
+      const questionsDocRef = doc(
+        db,
+        `flashcards/${subjectId}/${id}/questions`
+      );
+
+      const unsubSnapshot = onSnapshot(questionsDocRef, (snapshot) => {
+        if (snapshot.exists()) {
+          setQuestions(snapshot.data().questions);
+        } else {
+          console.log("Adding empty questions array");
+        }
+      });
+
+      return () => unsubSnapshot();
+    }
+
+    getQuestions();
+  }, [id, subjectId]);
+
+  useEffect(() => console.log("useEffect", questions), [questions]);
 
   return (
     <DetailsContainer>
-      <h1>{details.title}</h1>
-      <FlashCards questions={details.questions} currentIndex={currentIndex} />
-      <Controller
-        length={details.questions.length}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
+      <h1>{`${subjectId} - ${id}`}</h1>
+      <FlashCards questions={questions} currentIndex={currentIndex} />
+      {questions?.length && (
+        <Controller
+          length={questions.length}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
+      )}
     </DetailsContainer>
   );
 }

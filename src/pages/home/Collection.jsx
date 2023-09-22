@@ -32,7 +32,7 @@ export default function Collection({ data }) {
       {data.topics.length ? (
         <Grid>
           {data.topics.map((c) => (
-            <Link key={c} to={c}>
+            <Link key={c} to={`${data.id}/${c}`}>
               <Card cardDetail={c} />
             </Link>
           ))}
