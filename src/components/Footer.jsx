@@ -6,8 +6,9 @@ export default function Footer() {
   return (
     <FooterStyled>
       <IconStack>
-        <Icon icon="skill-icons:vite-dark" width={30} />
+        <Icon icon="vscode-icons:file-type-firebase" width={30} />
         <Icon icon="skill-icons:react-dark" width={30} />
+        <Icon icon="skill-icons:vite-dark" width={30} />
         <Icon icon="devicon:reactrouter" width={30} />
         <Icon icon="vscode-icons:file-type-styled" width={30} />
       </IconStack>
