@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import details from "../../data/details.json";
 import FlashCards from "./FlashCards";
 import Controller from "./Controller";
 import { useEffect, useState } from "react";
 import { db } from "/firebase/firebase-config";
-import { doc, getDoc, onSnapshot, setDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 export default function Details() {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -17,7 +17,7 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.footer`
-  background-color: ${({ theme }) => theme.colors.cardContent};
+  background-color: ${({ theme }) => theme.colors.footer};
   padding: 1rem;
   display: flex;
   align-items: center;

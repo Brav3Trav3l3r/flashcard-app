@@ -11,8 +11,8 @@ export const FormButton = styled.button`
   cursor: pointer;
   outline: 0;
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  border-color: ${({ theme }) => theme.colors.secondary};
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
@@ -26,8 +26,8 @@ export const FormButton = styled.button`
 
   &:hover {
     color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: ${({ theme }) => theme.colors.secondaryFocus};
+    border-color: ${({ theme }) => theme.colors.secondaryFocus};
   }
 `;
 

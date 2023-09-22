@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ThemeProvider, styled } from "styled-components";
 import { GlobalStyles } from "../components/styles/Global.styled";
@@ -13,42 +13,65 @@ export default function RootLayout() {
   const [isOpen, setIsOpen] = useState(false);
 
   const darkTheme = {
-    type: 'dark',
+    type: "dark",
     colors: {
-      body: "#000000",
-      card: "#F0E7D6",
-      cardContent: "#1A1A1A",
-      primary: "#D5D5D5",
-      secondary: "#FDFC97",
-      accent: "orange",
-      neutral: "#616161",
+      body: "#161213",
+      card: "#19342A",
+      cardContent: "#CBD3CE",
+      primary: "#CAC8C8",
+      secondary: "#1EB854",
+      secondaryFocus: "#189B46",
+      accent: "#1DB891",
+      neutral: "#CBD3CE",
+      footer: "#020302",
     },
   };
 
   const lightTheme = {
-    type: 'light',
+    type: "light",
     colors: {
       body: "#FEFEFF",
       card: "#1E2837",
       cardContent: "#D8DDE4",
       primary: "#1E2837",
       secondary: "#570DF8",
+      secondaryFocus: "#4B07DB",
       accent: "#F001B9",
       neutral: "#2B3440",
+      footer: "#F3F2F3",
     },
   };
 
   const [theme, setTheme] = useState(lightTheme);
 
   function toggleTheme() {
-    setTheme((prev) => (prev === lightTheme ? darkTheme : lightTheme));
+    if (theme.type == "light") {
+      setTheme(darkTheme);
+      localStorage.setItem("theme", JSON.stringify(darkTheme));
+    } else {
+      setTheme(lightTheme);
+      localStorage.setItem("theme", JSON.stringify(lightTheme));
+    }
   }
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(JSON.parse(savedTheme));
+    } else {
+      localStorage.setItem("theme", JSON.stringify(theme));
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Container>
-        <MainNavigation setIsOpen={setIsOpen} theme={theme} toggleTheme={toggleTheme} />
+        <MainNavigation
+          setIsOpen={setIsOpen}
+          theme={theme}
+          toggleTheme={toggleTheme}
+        />
         {isOpen && (
           <Modal setIsOpen={setIsOpen}>
             {location.pathname == "/" ? <AddCollection /> : <AddQuestion />}
